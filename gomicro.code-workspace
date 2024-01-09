@@ -1,0 +1,22 @@
+{
+  "folders": [
+	{
+		"path": "authentication-service"
+	},
+	{
+		"path": "broker-service"
+	},
+	{
+		"path": "front-end"
+	},
+	{
+		"path": "logger-service"
+	},
+	{
+		"path": "project"
+	}
+],
+  "settings": {
+    "editor.defaultFormatter": "golang.go"
+  }
+}
