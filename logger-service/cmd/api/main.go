@@ -47,10 +47,11 @@ func main() {
 		Models: data.New(client),
 	}
 
-	go app.serve()
+	app.serve()
 }
 
 func (app *Config) serve() {
+	log.Println("Starting service on port:", webPort)
 	srv := http.Server{
 		Addr:    fmt.Sprintf(":%s", webPort),
 		Handler: app.routes(),
