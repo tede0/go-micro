@@ -62,7 +62,7 @@ func (app *Config) logItem(w http.ResponseWriter, logEntry LogPayload) {
 		return
 	}
 
-	request.Header.Set("Content/Type", "application/json")
+	request.Header.Set("Content-Type", "application/json")
 
 	client := &http.Client{}
 
