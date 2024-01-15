@@ -37,8 +37,8 @@ services:
 
   mailer-service:
     build:
-      context: ./../mailer-service
-      dockerfile: ./../mailer-service/Dockerfile
+      context: ./../mail-service
+      dockerfile: ./../mail-service/Dockerfile
     restart: always
     deploy:
       mode: replicated
