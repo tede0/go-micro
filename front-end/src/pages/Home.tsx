@@ -34,6 +34,12 @@ const Home = () => {
     setRecieved(result.response)
   }
 
+  const TestMail = async (from: string, to: string, subject: string, message: string) => {
+    const result: PageData = await CallMail(from, to, subject, message)
+    setSent(result.request)
+    setRecieved(result.response)
+  }
+
   return (
     <>
       <div className="container w-3/4 mx-auto">
@@ -63,6 +69,13 @@ const Home = () => {
           >
             Test Log
           </button>
+
+          <button
+            onClick={() => TestMail('me@example.com', 'you@example.com', 'Test Email', 'Hello Email')}
+            className="bg-blue-500 hover:bg-blue-700 rounded-md text-white p-3"
+          >
+            Test Mail
+          </button>
         </div>
 
         <div className="mt-10 p-5 w-full border border-grey">
@@ -88,6 +101,54 @@ const Home = () => {
       </div>
     </>
   )
+}
+
+async function CallMail(from: string, to: string, subject: string, message: string) {
+  const payload = {
+    action: 'mail',
+    mail: {
+      from: from,
+      to: to,
+      subject: subject,
+      message: message
+    },
+  }
+
+  try {
+    const response: AxiosResponse = await axios({
+      method: 'POST',
+      url: 'http://localhost:8080/handle',
+      headers: { 'Content-Type': 'application/json' },
+      data: payload,
+    })
+
+    return {
+      request: payload,
+      response: {
+        error: false,
+        message: response.data.message,
+        data: response.data.data,
+      },
+    }
+  } catch (err) {
+    if (err instanceof Error) {
+      return {
+        request: payload,
+        response: {
+          error: true,
+          message: err.message,
+        },
+      }
+    }
+  }
+
+  return {
+    request: payload,
+    response: {
+      error: true,
+      message: 'Unknown error',
+    },
+  }
 }
 
 async function CallLog(name: string, data: string) {
