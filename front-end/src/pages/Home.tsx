@@ -92,7 +92,7 @@ const Home = () => {
 
 async function CallLog(name: string, data: string) {
   const payload = {
-    action: 'Log',
+    action: 'log',
     log: {
       name: name,
       data: data,
@@ -138,7 +138,7 @@ async function CallLog(name: string, data: string) {
 
 async function CallAuth(email: string, password: string): Promise<PageData> {
   const payload = {
-    action: 'Auth',
+    action: 'auth',
     auth: {
       email: email,
       password: password,
