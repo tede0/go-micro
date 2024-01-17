@@ -17,7 +17,10 @@
 	},
 	{
 		"path": "mail-service"
-	}
+	},
+	{
+		"path": "listener-service"
+	},
 ],
   "settings": {
     "editor.defaultFormatter": "golang.go"
