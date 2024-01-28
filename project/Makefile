@@ -51,6 +51,4 @@ build_mailer:
 ## start: starts the front end
 start:
 	@echo "Starting front end"
-	cd ../front-end && npm run dev &
-	@echo "Starting back end"
-	cd ../broker-service && go run ./cmd/api/
+	cd ../front-end && npm run dev
